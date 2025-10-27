@@ -42,10 +42,14 @@ public final class UseListsAndMaps {
         int lastElementArrayList = integerArrayList.get(integerArrayList.size());
 
         integerArrayList.set(0, lastElementArrayList);
+        integerArrayList.set(integerArrayList.size(), firstElementArrayList);
         
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
+        for (int elem : integerArrayList) {
+            System.out.println(elem);
+        }
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
