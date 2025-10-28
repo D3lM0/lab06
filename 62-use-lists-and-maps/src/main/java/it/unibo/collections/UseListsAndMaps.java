@@ -171,10 +171,10 @@ public final class UseListsAndMaps {
         /*
          * 8) Compute the population of the world
          */
-        final long worldPopulation = 0;
+        long worldPopulation = 0;
 
-        for (Long continentPopulation : continentsMap) {
-            
+        for (Long continentPopulation : continentsMap.values()) {
+            worldPopulation = worldPopulation + continentPopulation;
         }
     }
 }
