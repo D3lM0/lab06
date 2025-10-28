@@ -76,11 +76,11 @@ public final class UseListsAndMaps {
         System.out.println(
             "Inserting "
                 + ELEMS
-                + "elements in an ArrayList took "
+                + " elements in an ArrayList took "
                 + deltaAL
-                + "ns ("
+                + " ns ("
                 + millisAL
-                + "ms)"
+                + " ms)"
         );
         long startLL = System.nanoTime();
 
@@ -95,11 +95,11 @@ public final class UseListsAndMaps {
         System.out.println(
             "Inserting "
                 + ELEMS
-                + "elements in a LinkedList took "
+                + " elements in a LinkedList took "
                 + deltaLL
-                + "ns ("
+                + " ns ("
                 + millisLL
-                + "ms)"
+                + " ms)"
         );
 
         /*
@@ -119,11 +119,11 @@ public final class UseListsAndMaps {
         long deltaAL2 = System.nanoTime() - startAL2;
         final var millisAL2 = TimeUnit.NANOSECONDS.toMillis(deltaAL2);
           System.out.println(
-            "Reading middle element in an ArrayList " + TIMES + "times took "
+            "Reading middle element in an ArrayList " + TIMES + " times took "
                 + deltaAL2
-                + "ns ("
+                + " ns ("
                 + millisAL2
-                + "ms)"
+                + " ms)"
           );
 
         long startLL2 = System.nanoTime();
@@ -134,11 +134,11 @@ public final class UseListsAndMaps {
         long deltaLL2 = System.nanoTime() - startLL2;
         final var millisLL2 = TimeUnit.NANOSECONDS.toMillis(deltaLL2);
           System.out.println(
-            "Reading middle element in an ArrayList " + TIMES + "times took "
+            "Reading middle element in an ArrayList " + TIMES + " times took "
                 + deltaLL
-                + "ns ("
+                + " ns ("
                 + millisLL2
-                + "ms)"
+                + " ms)"
         );
         
 
