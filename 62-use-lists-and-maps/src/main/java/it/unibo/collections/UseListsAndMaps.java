@@ -76,7 +76,7 @@ public final class UseListsAndMaps {
         System.out.println(
             "Inserting "
                 + ELEMS
-                + "elements in an ArrayList took"
+                + "elements in an ArrayList took "
                 + deltaAL
                 + "ns ("
                 + millisAL
@@ -95,7 +95,7 @@ public final class UseListsAndMaps {
         System.out.println(
             "Inserting "
                 + ELEMS
-                + "elements in a LinkedList took"
+                + "elements in a LinkedList took "
                 + deltaLL
                 + "ns ("
                 + millisLL
@@ -119,7 +119,7 @@ public final class UseListsAndMaps {
         long deltaAL2 = System.nanoTime() - startAL2;
         final var millisAL2 = TimeUnit.NANOSECONDS.toMillis(deltaAL2);
           System.out.println(
-            "Reading middle element in an ArrayList " + TIMES + "times took"
+            "Reading middle element in an ArrayList " + TIMES + "times took "
                 + deltaAL2
                 + "ns ("
                 + millisAL2
@@ -134,7 +134,7 @@ public final class UseListsAndMaps {
         long deltaLL2 = System.nanoTime() - startLL2;
         final var millisLL2 = TimeUnit.NANOSECONDS.toMillis(deltaLL2);
           System.out.println(
-            "Reading middle element in an ArrayList " + TIMES + "times took"
+            "Reading middle element in an ArrayList " + TIMES + "times took "
                 + deltaLL
                 + "ns ("
                 + millisLL2
@@ -176,5 +176,7 @@ public final class UseListsAndMaps {
         for (Long continentPopulation : continentsMap.values()) {
             worldPopulation = worldPopulation + continentPopulation;
         }
+
+        System.out.println("The world population is " + worldPopulation);
     }
 }
