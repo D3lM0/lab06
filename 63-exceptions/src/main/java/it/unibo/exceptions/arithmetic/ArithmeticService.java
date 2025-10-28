@@ -55,6 +55,7 @@ public final class ArithmeticService {
      * @return the result of the process
      */
     public String process() {
+        try {
         if (commandQueue.isEmpty()) {
             throw new IllegalStateException("No commands sent, no result available");
         }
@@ -62,16 +63,16 @@ public final class ArithmeticService {
             final var nextMultiplication = commandQueue.indexOf(TIMES);
             final var nextDivision = commandQueue.indexOf(DIVIDED);
             final var nextPriorityOp = nextMultiplication >= 0 && nextDivision >= 0
-                ? min(nextMultiplication, nextDivision)
-                : max(nextMultiplication, nextDivision);
+                    ? min(nextMultiplication, nextDivision)
+                    : max(nextMultiplication, nextDivision);
             if (nextPriorityOp >= 0) {
                 computeAt(nextPriorityOp);
             } else {
                 final var nextSum = commandQueue.indexOf(PLUS);
                 final var nextMinus = commandQueue.indexOf(MINUS);
                 final var nextOp = nextSum >= 0 && nextMinus >= 0
-                    ? min(nextSum, nextMinus)
-                    : max(nextSum, nextMinus);
+                        ? min(nextSum, nextMinus)
+                        : max(nextSum, nextMinus);
                 if (nextOp != -1) {
                     if (commandQueue.size() < 3) {
                         throw new IllegalStateException("Inconsistent operation: " + commandQueue);
@@ -92,7 +93,10 @@ public final class ArithmeticService {
          * The commandQueue should be cleared, no matter what, when the method exits
          * But how?
          */
+    } finally {
+        commandQueue.clear();
     }
+}
 
     private void computeAt(final int operatorIndex) {
         if (operatorIndex == 0) {
@@ -121,7 +125,6 @@ public final class ArithmeticService {
             case DIVIDED -> left / right;
             default -> {
                 throw new IllegalStateException("Unknown operand " + operand);
-                yield Double.NaN;
             }
         };
         commandQueue.set(operatorIndex - 1, Double.toString(result));
