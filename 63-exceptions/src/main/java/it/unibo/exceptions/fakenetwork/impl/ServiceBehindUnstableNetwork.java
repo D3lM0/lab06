@@ -31,6 +31,11 @@ public final class ServiceBehindUnstableNetwork implements NetworkComponent {
          */
         this.failProbability = failProbability;
         randomGenerator = new Random(randomSeed);
+
+        if (this.failProbability < 0 || this.failProbability >= 1) {
+            final String errorMessage = "The probability should be within 0 and 1 excluded";
+            throw new java.lang.IllegalArgumentException(errorMessage);
+        }
     }
 
     /**
