@@ -109,8 +109,8 @@ public final class UseListsAndMaps {
          */
         int middleIndexAL = integerArrayList.size() / 2;
         int middleIndexLL = integerLinkedList.size() / 2;
+        
         long startAL2 = System.nanoTime();
-
         for (int i = 0; i < TIMES; i++) {
             integerArrayList.get(middleIndexAL);
         }
@@ -119,9 +119,24 @@ public final class UseListsAndMaps {
         final var millisAL2 = TimeUnit.NANOSECONDS.toMillis(deltaAL2);
           System.out.println(
             "Reading middle element in an ArrayList " + TIMES + "times took"
-                + deltaLL
+                + deltaAL2
                 + "ns ("
                 + millisAL2
+                + "ms)"
+          );
+
+        long startLL2 = System.nanoTime();
+        for (int i = 0; i < TIMES; i++) {
+            integerLinkedList.get(middleIndexLL);
+        }
+        
+        long deltaLL2 = System.nanoTime() - startLL2;
+        final var millisLL2 = TimeUnit.NANOSECONDS.toMillis(deltaLL2);
+          System.out.println(
+            "Reading middle element in an ArrayList " + TIMES + "times took"
+                + deltaLL
+                + "ns ("
+                + millisLL2
                 + "ms)"
         );
         /*
