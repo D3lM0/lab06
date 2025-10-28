@@ -91,7 +91,7 @@ public final class SocialNetworkUserImpl<U extends User> extends UserImpl implem
      */
     @Override
     public Collection<U> getFollowedUsersInGroup(final String groupName) {
-        return followedUsers.getOrDefault(groupName, Collections.emptyList());
+        return new ArrayList<>(followedUsers.getOrDefault(groupName, Collections.emptyList()));
     }
 
     @Override

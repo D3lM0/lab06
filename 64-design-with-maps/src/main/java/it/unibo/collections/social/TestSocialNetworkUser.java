@@ -55,8 +55,8 @@ public final class TestSocialNetworkUser {
         final SocialNetworkUser<User> dwashington = new SocialNetworkUserImpl<>("Denzel", "Washington", "dwashington",
                 59); // TODO
         final SocialNetworkUser<User> mgladwell = new SocialNetworkUserImpl<>("Malcom", "Gladwell", "mgladwell", 51); // TODO
-        final SocialNetworkUser<User> ntaleb = n; // TODO
-        final User asmith = null; //TODO
+        final SocialNetworkUser<User> ntaleb = new SocialNetworkUserImpl<>("Nicholas", "Taleb", "ntaleb", 54); // TODO
+        final User asmith = new UserImpl("Adam", "Smith", "asmith"); // TODO
         /*
          * Make people follow each other
          */
