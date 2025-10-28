@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 public final class UseListsAndMaps {
     private static final int ELEMS = 100000;
+    private static final int TIMES = 1000;
 
     private UseListsAndMaps() {
     }
@@ -46,7 +48,7 @@ public final class UseListsAndMaps {
         int lastElementArrayList = integerArrayList.getLast();
 
         integerArrayList.set(firstIndex, lastElementArrayList);
-        integerArrayList.set(integerArrayList.size(), firstElementArrayList);
+        integerArrayList.set(integerArrayList.size() - 1, firstElementArrayList);
         
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
@@ -61,31 +63,41 @@ public final class UseListsAndMaps {
          * using the previous lists. In order to measure times, use as example
          * TestPerformance.java.
          */
-        long time = System.nanoTime();
-
-        for (int i = 0; i < ELEMS; i++) {
-            integerArrayList.addFirst(i);
-            integerLinkedList.addFirst(i);
+        long startAL = System.nanoTime();
+         
+        for (int i = 0; i <= ELEMS; i++) {
+            int ranNumber = new Random().nextInt();
+            integerArrayList.addFirst(ranNumber);
         }
 
-        time = System.nanoTime() - time;
-        final var millis = TimeUnit.NANOSECONDS.toMillis(time);
+        long deltaAL = System.nanoTime() - startAL;
+        final var millisAL = TimeUnit.NANOSECONDS.toMillis(deltaAL);
         System.out.println(
             "Inserting "
                 + ELEMS
                 + "elements in an ArrayList took"
-                + time
+                + deltaAL
                 + "ns ("
-                + millis
+                + millisAL
                 + "ms)"
         );
+        long startLL = System.nanoTime();
+
+        for (int i = 0; i <= ELEMS; i++) {
+            int ranNumber = new Random().nextInt();
+            integerArrayList.addFirst(ranNumber);
+            integerLinkedList.addFirst(ranNumber);
+        }
+
+        long deltaLL = System.nanoTime() - startLL;
+        final var millisLL = TimeUnit.NANOSECONDS.toMillis(deltaLL);
         System.out.println(
             "Inserting "
                 + ELEMS
                 + "elements in a LinkedList took"
-                + time
+                + deltaLL
                 + "ns ("
-                + millis
+                + millisLL
                 + "ms)"
         );
 
@@ -95,6 +107,23 @@ public final class UseListsAndMaps {
          * LinkedList, using the collections of point 5. In order to measure
          * times, use as example TestPerformance.java.
          */
+        int middleIndexAL = integerArrayList.size() / 2;
+        int middleIndexLL = integerLinkedList.size() / 2;
+        long startAL2 = System.nanoTime();
+
+        for (int i = 0; i < TIMES; i++) {
+            integerArrayList.get(middleIndexAL);
+        }
+        
+        long deltaAL2 = System.nanoTime() - startAL2;
+        final var millisAL2 = TimeUnit.NANOSECONDS.toMillis(deltaAL2);
+          System.out.println(
+            "Reading middle element in an ArrayList " + TIMES + "times took"
+                + deltaLL
+                + "ns ("
+                + millisAL2
+                + "ms)"
+        );
         /*
          * 7) Build a new Map that associates to each continent's name its
          * population:
