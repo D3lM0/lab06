@@ -2,6 +2,7 @@ package it.unibo.generics.graph.impl;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -38,4 +39,15 @@ public class GraphImpl<N> implements Graph<N> {
     public Set<N> nodeSet() {
         return Set.copyOf(nodes);
     }
+
+    @Override
+    public Set<N> linkedNodes(N node) {
+        return edges.get(node);
+    }
+
+    @Override
+    public List<N> getPath(N source, N target) {
+        return null;
+    }
+
 }
