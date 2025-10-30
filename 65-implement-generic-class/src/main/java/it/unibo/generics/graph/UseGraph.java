@@ -29,12 +29,12 @@ public final class UseGraph {
         /*
          * Test your graph implementation(s) by calling testGraph
          */
-
         Graph<String> stringGraph = new GraphImpl<>();
         testGraph(stringGraph);
     }
 
     private static void testGraph(final Graph<String> graph) {
+        final boolean choice = true;
         graph.addNode(A);
         graph.addNode(B);
         graph.addNode(C);
@@ -58,7 +58,7 @@ public final class UseGraph {
          * Either the path b,c,a or b,c,d,e,a
          */
         assertIsAnyOf(
-            graph.getPath(B, A),
+                graph.getPath(B, A, choice),
             Arrays.asList(B, C, A),
             Arrays.asList(B, C, D, E, A)
         );
