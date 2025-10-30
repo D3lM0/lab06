@@ -50,7 +50,11 @@ public class GraphImpl<N> implements Graph<N> {
     }
 
     @Override
-    public List<N> getPath(final N source, final N target) {
+    public List<N> getPath(final N source, final N target, final boolean choice) {
+
+    }
+
+    private List<N> bfs(final N source, final N target) {
         /* BFS implementation */
         final Map<N, N> predecessors = new HashMap<>();
         final Queue<N> queue = new LinkedList<>();
@@ -71,6 +75,34 @@ public class GraphImpl<N> implements Graph<N> {
             }
         }
         return List.of();
+    }
+
+    private List<N> dfs(final N source, final N target) {
+        final Map<N, N> predecessors = new HashMap<>();
+        final Set<N> visited = new HashSet<>();
+
+        if (dfsVisit(source, target, visited, predecessors)) {
+            return buildPath(predecessors, target);
+        }
+
+        return Collections.emptyList();
+    }
+
+    private boolean dfsVisit(final N current, final N target, final Set<N> visited, final Map<N, N> predecessors) {
+        visited.add(current);
+        if (current.equals(target)) {
+            return true;
+        }
+
+        for (final N adj : edges.get(current)) {
+            if (!visited.contains(adj)) {
+                predecessors.put(adj, current);
+                if (dfsVisit(adj, current, visited, predecessors)) {
+                    return true;
+                }
+            }
+        }
+
     }
 
     private List<N> buildPath(final Map<N, N> predecessors, final N target) {
